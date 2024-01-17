@@ -13,7 +13,7 @@ Objective is to create one R script called run_analysis.R that does the followin
 - Readme
 - CodeBook
 - run_analysis.R
-- Files Tidy_Mean.txt
+- File Tidy_Mean.txt
 # Workflow in run_analysis.R
 The script can be started from the working directory with source("run_analysis.R")
 Processflow in script (mostly using methods from tidyverse)
