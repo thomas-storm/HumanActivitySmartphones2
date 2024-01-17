@@ -89,7 +89,7 @@ Tidy <- Untidy %>%  select(matches("experiment") | matches("subject") | matches(
 
 Tidy_Mean <- Tidy %>% group_by(subject, activity) %>% summarize_at(c(4:67), mean, na.rm = TRUE)
 
-# write to two files
+# write to a text file
 
 write.table(Tidy_Mean, file = "./Tidy_Mean.txt", row.names = FALSE)
 
