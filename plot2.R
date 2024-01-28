@@ -1,5 +1,5 @@
 ## Peer-graded Assignment: Exploratory Data Analysis Course Project 2
-## Plot1
+## Plot2
 
 library(dplyr)
 
@@ -24,27 +24,28 @@ if (!dir.exists(sub_dir)){
 NEI <- readRDS("./data/summarySCC_PM25.rds")
 SCC <- readRDS("./data/Source_Classification_Code.rds")
 
-NEI_overall <- NEI %>%
-        select(Emissions, year) %>%
-        group_by(year) %>%
-        mutate(total.pm25 = sum(Emissions))
+NEI_Baltimore <- NEI %>%
+  select(fips, Emissions, year) %>%
+  filter(fips == "24510") %>%
+  group_by(year) %>%
+  mutate(total.pm25 = sum(Emissions))
 
-year <- unique(NEI_overall$year)
-total <- unique(NEI_overall$total.pm25)
+year <- unique(NEI_Baltimore$year)
+total.B <- unique(NEI_Baltimore$total.pm25)
 
 ## simple bar-plot of sum of emissions PER YEAR to show decrease from 1999 to 2008
 
-png(file = "plot1.png")
+png(file = "plot2.png")
 
-barplot(total/10^6, year, 
-        ylim = c(0, 10),
+barplot(total.B, year,
+        ylim = c(0, 4000),
         names.arg = c("1999", "2002", "2005", "2008"),
-        main = "Total pm2.5 emissions 1999 - 2008 [mto]",
-        sub = "Emissions decreased by 3.9 mto (53%)",
+        main = "Total pm2.5 emissions 1999 - 2008 in Baltimore [to]",
+        sub = "Emissions decreased by 1412 to (43%)",
         xlab = "Year",
-        ylab = "Emissions [mto]"
+        ylab = "Emissions [to]"
 )
 box()
 dev.off()
 
-##rm(list = ls())
+## rm(list = ls())
