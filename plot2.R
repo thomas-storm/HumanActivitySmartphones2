@@ -48,4 +48,4 @@ barplot(total.B, year,
 box()
 dev.off()
 
-## rm(list = ls())
+rm(list = ls())
